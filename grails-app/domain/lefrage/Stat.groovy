@@ -1,11 +1,11 @@
 package lefrage
 
-
-
 class Stat {
 	Date date
 	float mean, deviation, max, min
 	int sales
+
+	static belongsTo={query: Query}
 		
 	Stat calcMean(prices) { 
 		def n = prices.size()

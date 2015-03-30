@@ -21,17 +21,17 @@ class SearchService {
     	def query = currentUser.queries.find{it.queryString==queryString}
         if(!query){
             query = new Query(queryString: queryString)
-            currentUser.addToQueries(query)    
+            def stat = new Stat(date:new Date())
+                .calcMean(products.price)
+                .calcDeviation(products.price)
+                .calcMax(products.price)
+                .calcMin(products.price)
+            query.addToStats(stat)
+            currentUser.addToQueries(query)
         }
         else{
             currentUser.removeFromQueries(query)
             query.delete()
         }
-        def stat = new Stat(date:new Date())
-            .calcMean(products.price)
-            .calcDeviation(products.price)
-            .calcMax(products.price)
-            .calcMin(products.price)
-        stat.save(flush:true,failOnError:true)
     }
 }
