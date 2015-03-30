@@ -9,20 +9,21 @@ function completePostTemplate(urlImg, itemTitle, itemPrice) {
 };
 
 function postProduct() {
-	var productJSON = {
-		text:  $("#postModal postContent").text(),
+	$("#postContent").empty();
+
+	var jsProdContent = {
+		text:  $("#postContent").val(),
 		title: $("#post_result h3").text(),
 		price: $("#post_result p").text(),
 		image: $("#post_result img").attr("src")
 	};
 
-	var urlController = '${createLink(controller: "wall", action: "writePost")}'
-	$.ajax({
-		url: urlController,
-		data: productJSON,
-		success: function() {
+	jsProdContent = JSON.stringify(jsProdContent)
 
-		}
+	$.post(urlController, {"jsProdContent": jsProdContent}).done(function() {
+		console.log("in postProduct");
+		$("#postModal").modal('hide');
 	});
+	
 
 };

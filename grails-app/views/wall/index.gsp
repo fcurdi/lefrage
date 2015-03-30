@@ -35,7 +35,7 @@
 		<div class="well well-lg" style="width:800px;margin-left:auto;">
 			<form style="margin-left:auto;margin-right:auto;width:700px" method="post" action="${createLink(controller: "wall", action: "writePost", params: [username: username])}">
 	       		<div>
-	            	<g:textArea id="input-post" style="font-size:13pt" placeholder="Le post text..." class="form-control" name="HTMLpostContent"/>
+	            	<g:textArea id="input-post" style="font-size:13pt" placeholder="Le post text..." class="form-control" name="htmlPostContent"/>
 	            </div>
 	            <br/>
 	            <button id="btn-post" disabled="disabled" type="submit" class="btn btn-primary pull-right">Postear</button>

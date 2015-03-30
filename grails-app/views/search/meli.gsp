@@ -99,5 +99,8 @@
 			var link="${createLink(controller:'search', action:'favourite')}"
 			searchItems(0, "${search}", link);
 		</script>
+		<script>
+			urlController = '${createLink(controller: "wall", action: "writePost")}'
+		</script>
 	</body>
 </html>

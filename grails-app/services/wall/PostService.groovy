@@ -12,12 +12,15 @@ import java.util.Date
 class PostService {
 
     def productPost(prodContent, loggedUser) {
-    	def textContent = prodContent.text
-    	def prod = new Product(
-    		productTitle: prodContent.title,
-    		prodcutUrlImg: prodContent.image,
-    		productPrice: prodContent.price
-    	)
+        def prod = new Product(
+            productTitle: prodContent.title,
+            productUrlImg: prodContent.image,
+            productPrice: prodContent.price
+        )
+
+        prod.save(flush: true, failOnError: true)
+    	
+        def textContent = prodContent.text
     	def newDate = new Date()
     	def newPost = new Post(
     		content: textContent,
@@ -44,10 +47,6 @@ class PostService {
 	       	author: loggedUser,
 	        containingWallUser: wallOwner
 	    )
-
-        println "content: " + newPost.content
-        println "author: " + newPost.author
-        println "containingWallUser: " + newPost.containingWallUser
 
         newPost.save(flush: true, failOnError: true)
         wallOwner.addToWallPosts(newPost)

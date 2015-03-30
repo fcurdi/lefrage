@@ -3,7 +3,7 @@ package lefrage
 import grails.plugin.springsecurity.annotation.*
 import security.*
 import org.springframework.security.core.context.SecurityContextHolder // necessary to obtain current user
-
+import groovy.json.JsonSlurper
 import wall.PostService
 
 @Secured(['ROLE_USER'])
@@ -43,14 +43,16 @@ class WallController {
 
       def currentSpringUser = springSecurityService.currentUser
       def loggedUser = User.findBySpringUser(currentSpringUser)
+        
+      def slurper = new JsonSlurper()
+      def prodContent = slurper.parseText(params.jsProdContent)
 
-      def prodContent = params.jsProdContent
-
+      println prodContent.image
       if (prodContent != null) {
         postService.productPost(prodContent, loggedUser)
         render "ignore"
       } else {
-    	  postService.textPost(loggedUser, params.username, params.HTMLpostContent)
+    	  postService.textPost(loggedUser, params.username, params.htmlPostContent)
         redirect(controller: "wall", action: "index", params: params)
       }
 
