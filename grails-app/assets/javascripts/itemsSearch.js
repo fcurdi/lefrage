@@ -78,19 +78,19 @@ function fetchItemData(data) {
 		promises.push(promise);
 	});
 
-
-
 	var super_promise = $.when.apply(this, promises);
 	return super_promise;
 };
 			
 function addResults (index, item) {
 	var search_item = $.get("https://api.mercadolibre.com/items/"+item.id);
-	search_item.done(function(res) {		
+	search_item.done(function(res) {
+		console.log(res.pictures)
 		var content = $("#search_item_template").html();
 		content = content.replace(/#itemTitle/g, res.title);
 		content = content.replace(/#itemPrice/g, res.price);
-		content = content.replace(/#urlImg/g, res.pictures[0].url);
+		if(res.pictures[0])
+			content = content.replace(/#urlImg/g, res.pictures[0].url);
 		$("#search_result").append(content);
 	});
 	search_item.fail(showError);
