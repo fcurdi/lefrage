@@ -38,7 +38,7 @@ class WallController {
       profileDOB: user.dateOfBirth, profileFriendsCount: friendsCount]
 
     }
-
+    
     def writePost() {
 
       def currentSpringUser = springSecurityService.currentUser
@@ -47,12 +47,11 @@ class WallController {
       def slurper = new JsonSlurper()
       def prodContent = slurper.parseText(params.jsProdContent)
 
-      println prodContent.image
       if (prodContent != null) {
-        postService.productPost(prodContent, loggedUser)
+        postService.productPost(loggedUser, params.username, prodContent)
         render "ignore"
       } else {
-    	  postService.textPost(loggedUser, params.username, params.htmlPostContent)
+        postService.textPost(loggedUser, params.username, params.htmlPostContent)
         redirect(controller: "wall", action: "index", params: params)
       }
 

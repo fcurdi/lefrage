@@ -27,8 +27,10 @@ class SearchController {
         def currentSpringUser = springSecurityService.currentUser
         def user = User.findBySpringUser(currentSpringUser)
         def favourited = user.queries.find{it.queryString==params.item_search} != null
+        def postDestination = user.friends
+        postDestination.add(0,user) //add myself to it
     	[search: params.item_search, optionName: params.optionName, 
-            optionValue: params.optionValue, favourited: favourited] 
+            optionValue: params.optionValue, favourited: favourited, postDestination: postDestination] 
     }
 
     def favourite(){

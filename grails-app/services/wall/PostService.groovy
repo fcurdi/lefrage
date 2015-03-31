@@ -11,7 +11,10 @@ import java.util.Date
 @Transactional
 class PostService {
 
-    def productPost(prodContent, loggedUser) {
+    def productPost(loggedUser, username, prodContent ) {
+
+        def urlSpringUser = SpringUser.findByUsername(username)
+        def wallOwner = User.findBySpringUser(urlSpringUser)
         
         def prod = new Product(
             productTitle: prodContent.title,
@@ -20,19 +23,19 @@ class PostService {
         )
 
         prod.save(flush: true, failOnError: true)
-    	
+        
         def textContent = prodContent.text
-    	def newDate = new Date()
-    	def newPost = new Post(
-    		content: textContent,
-    		product: prod,
-    		date: newDate,
-    		author: loggedUser,
-    		containingWallUser: loggedUser
-    	)
+        def newDate = new Date()
+        def newPost = new Post(
+            content: textContent,
+            product: prod,
+            date: newDate,
+            author: loggedUser,
+            containingWallUser: wallOwner
+        )
 
-    	newPost.save(flush: true, failOnError: true)
-    	loggedUser.addToWallPosts(newPost)
+        newPost.save(flush: true, failOnError: true)
+        wallOwner.addToWallPosts(newPost)
 
     }
 
