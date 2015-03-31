@@ -11,7 +11,7 @@ class Post {
 
 	User author // author of post
 
-	def isAutoPost // corregir
+	Boolean isAutoPost // corregir
 	
 	static belongsTo = [containingWallUser: User] // the user in whose wall this post lives
 

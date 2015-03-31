@@ -94,7 +94,8 @@ class BootStrap {
 			author: us1,
 			content: 'que deje de cortarse la luz porfi',
 			date: newDate1,
-			product: null
+			product: null,
+			isAutoPost: true
 		)
 		
 		newPost1.save(flush: true, failOnError: true)
@@ -105,7 +106,8 @@ class BootStrap {
 			author: us1,
 			content: 'postis es molesto',
 			date: newDate2,
-			product: null
+			product: null,
+			isAutoPost: true
 		)
 		newPost2.save(flush: true, failOnError: true)
 
@@ -115,7 +117,8 @@ class BootStrap {
 			author: us1,
 			content: 'se me apaga el wifi',
 			date: newDate3,
-			product: null
+			product: null,
+			isAutoPost: true
 		)
 		newPost3.save(flush: true, failOnError: true)
 
