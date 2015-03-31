@@ -17,7 +17,7 @@
 					${username}
 				</h3>
 				<h3 style="margin-top:5px">
-					<g:formatDate date="${profileDOB}" format="yyyy-MM-dd"/>
+					<g:formatDate date="${profileDOB}" format="dd/MM/yyyy"/>
 				</h3>
 				<h3 style="margin-top:5px">
 					<a href="/lefrage/${username}/amigos">
@@ -53,7 +53,7 @@
 							<div class="panel-heading ${post.product ? "ml" : (post.isAutoPost ? "autopost" : "")}">
 					  			${post.author.name}
 					  			<div style="float:right" id="parsedDate${i}">
-				  					<g:formatDate date="${post.date}" format="yyyy-MM-dd HH:mm:ss"/>
+				  					<g:formatDate date="${post.date}" format="dd/MM/yyyy HH:mm"/>
 					  			</div>
 					  		</div>
 			  				<div class="panel-body">
