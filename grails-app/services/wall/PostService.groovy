@@ -12,6 +12,7 @@ import java.util.Date
 class PostService {
 
     def productPost(prodContent, loggedUser) {
+        
         def prod = new Product(
             productTitle: prodContent.title,
             productUrlImg: prodContent.image,
@@ -31,7 +32,7 @@ class PostService {
     	)
 
     	newPost.save(flush: true, failOnError: true)
-    	wallOwner.addToWallPosts(newPost)
+    	loggedUser.addToWallPosts(newPost)
 
     }
 
