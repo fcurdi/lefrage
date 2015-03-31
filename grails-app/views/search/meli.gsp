@@ -85,10 +85,16 @@
 		</script>
 
 		<script id="error_search" type="text/template">
-			<div>
-				<div class="alert alert-danger alert-dismissible" role="alert">
-					Error en la búsqueda, por favor vuelva a intentarlo.
-				</div>
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				Error en la búsqueda, por favor vuelva a intentarlo.
+			</div>
+		</script>
+
+		<script id="no_results" type="text/template">
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				La búsqueda no produjo ningún resultado, por favor vuelva a intentarlo.
 			</div>
 		</script>
 
@@ -97,6 +103,7 @@
 			var link="${createLink(controller:'search', action:'favourite')}"
 			searchItems(0, "${search}", link);
 		</script>
+
 		<script>
 			urlController = '${createLink(controller: "wall", action: "writePost")}'
 		</script>

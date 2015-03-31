@@ -12,13 +12,21 @@ function searchItems(offset, item, favouriteUrl) {
 						condition: "new",
 						buying_mode: "buy_it_now"});
 	search.done(function(data){
-		showResults(data, favouriteUrl, item)
+		if (data.results.length == 0) {
+			showNoResults();
+
+		} else {
+			showResults(data, favouriteUrl, item);
+		}
 	});
 	search.fail(showError);
 };
 
 function showResults(data, favouriteUrl, item) {
 	$("#search_result").empty();
+	if (data.results.size == 0) {
+			showNoResults();
+	}
 	var super_promise = fetchItemData(data);
 	super_promise.done(function() {
 		if (data.paging.offset > 0) {
@@ -100,5 +108,10 @@ function addResults (index, item) {
 			
 function showError() {
 	$("#search_result").empty();
-	$("#search_result").append($("#error_search"));
+	$("#search_result").append($("#error_search").html());
+};
+
+function showNoResults () {
+	$("#search_result").empty();
+	$("#search_result").append($("#no_results").html());
 };
