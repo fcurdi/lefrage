@@ -15,7 +15,14 @@
 	<body>
 		<g:each var="search" in="${searches}">
 			<div class="well well-lg">
-				<h3>${search.queryString}</h3>
+				<h2>${search.queryString}</h2>
+				<g:each var="stat" in="${search.stats}">
+					<h3>${stat.date}</h3>
+					mean=${stat.mean}, 
+					deviation=${stat.deviation},
+					max=${stat.max},
+					min=${stat.min}
+				</g:each>
 			</div>
 		</g:each>
 	</body>

@@ -54,7 +54,6 @@ function showResults(data, favouriteUrl, item) {
 	});
 
 	$("#btn-favourite").off("click").click(function() {
-		//TODO hacer que se guarden los stats en el controller
 		var info = { "query": item};
 		var infoStr = JSON.stringify(info);
 		$.ajax({
