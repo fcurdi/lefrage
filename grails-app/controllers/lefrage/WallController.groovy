@@ -28,11 +28,12 @@ class WallController {
       }
 
       def sortedPosts = user.wallPosts.sort{it.date}.reverse(true)
-    	def autoPostBoolean = user.id == currentUser.id
+
+    	def ownWallBoolean = user.id == currentUser.id
       
       def friendsCount = user.friends.size()
 
-    	[isAutoPost: autoPostBoolean, name: user.name,
+    	[isOwnWall: ownWallBoolean, name: user.name,
       surname: user.surname, username: springUser.username,
       currentUserName: currentUser.name, userPosts: sortedPosts,
       profileDOB: user.dateOfBirth, profileFriendsCount: friendsCount]
@@ -45,9 +46,10 @@ class WallController {
       def loggedUser = User.findBySpringUser(currentSpringUser)
         
       def slurper = new JsonSlurper()
-      def prodContent = slurper.parseText(params.jsProdContent)
+      def jsPC = params.jsProdContent
+      def prodContent = jsPC ? slurper.parseText(jsPC) : null
 
-      if (prodContent != null) {
+      if (prodContent) {
         postService.productPost(loggedUser, prodContent.usernameDestination, prodContent)
         render "ignore"
       } else {

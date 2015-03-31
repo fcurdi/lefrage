@@ -24,7 +24,7 @@
 						Amigos: ${profileFriendsCount}
 					</a>
 				</h3>
-					<g:if test="${isAutoPost}">
+					<g:if test="${isOwnWall}">
 					<a href="/lefrage/${username}/busquedas" class="btn btn-default mlblue-btn" style="margin-top:0px; width:100%; margin-top:10px">
 						Mis búsquedas
 					</a>
@@ -50,7 +50,7 @@
 				<div style="width:700px;margin-left:auto;margin-right:auto" >
 					<g:each status="i" var="post" in="${userPosts}">
 						<div style="font-size:15pt"	class="panel panel-default">
-					  		<div class="panel-heading ${isAutoPost ? "autopost" : (post.product ? "ml" : "")}">
+					  		<div class="panel-heading ${post.isAutoPost ? "autopost" : (post.product ? "ml" : "")}">
 					  			${post.author.name}
 					  			<div style="float:right" id="parsedDate${i}">
 				  					<g:formatDate date="${post.date}" format="yyyy-MM-dd HH:mm:ss"/>
@@ -59,6 +59,30 @@
 			  				<div class="panel-body">
 			    				${post.content}
 			  				</div>
+			  				<g:if test="${post.product}">
+			  					<div>
+			  				 		<hr/>
+			  				 		<table>
+				  				 		<th>
+				  				 			<a href="http://www.mercadolibre.com/">
+							  					<img src="${post.product.productUrlImg}" target="_blank" alt="${post.product.productTitle}" height="150" width="150" hspace="20">
+							  					</img>
+						  					</a>
+						  					<br/><br/>
+					  					</th>
+					  					<th>
+					  						<a href="http://www.mercadolibre.com/" target="_blank">
+						  						<h2>
+						  							${post.product.productTitle}
+						  						</h2>
+						  					</a>
+					  						<h3>
+					  							${post.product.productPrice}
+					  						</h3>
+				  						</th>
+				  					</table>
+			  					</div>
+			  				</g:if>
 						</div>
 					</g:each>
 				</div>
