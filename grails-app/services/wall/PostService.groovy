@@ -11,8 +11,11 @@ import java.util.Date
 @Transactional
 class PostService {
 
-    def productPost(prodContent, loggedUser) {
-        println "hola productPost(), prodContent.image: " + prodContent.image
+    def productPost(loggedUser, username, prodContent ) {
+
+        def urlSpringUser = SpringUser.findByUsername(username)
+        def wallOwner = User.findBySpringUser(urlSpringUser)
+
         def prod = new Product(
             productTitle: prodContent.title,
             productUrlImg: prodContent.image,
@@ -20,7 +23,7 @@ class PostService {
         )
 
         prod.save(flush: true, failOnError: true)
-        println "hola productPost(), prod.productUrlImg: " + prod.productUrlImg
+
         def textContent = prodContent.text
         def newDate = new Date()
         def newPost = new Post(
@@ -28,12 +31,12 @@ class PostService {
             product: prod,
             date: newDate,
             author: loggedUser,
-            containingWallUser: loggedUser,
+            containingWallUser: wallOwner,
             isAutoPost: true // modificar cuando este hecho el compartir de producto
         )
 
-    	newPost.save(flush: true, failOnError: true)
-    	loggedUser.addToWallPosts(newPost)
+        newPost.save(flush: true, failOnError: true)
+        wallOwner.addToWallPosts(newPost)
 
     }
 
@@ -53,9 +56,7 @@ class PostService {
             isAutoPost: autoPostBoolean
 	    )
 
-
         newPost.save(flush: true, failOnError: true)
-        println "Hola. textPost(" + loggedUser.name + ", " + wallOwner.name + ", " + htmlPostContent + "). isAutoPost: " + newPost.isAutoPost
         wallOwner.addToWallPosts(newPost)
     }
 }
