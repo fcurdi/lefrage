@@ -49,7 +49,7 @@
 		      			<div class="row"></div>
 		      			<div>
 							<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-							<button onclick="postProduct()" type="button" class="btn btn-primary">Post</button>
+							<button onclick="postProduct()" type="button" class="btn btn-primary">Compartir</button>
 		      			</div>
 					</div>
 				</div> <!-- /modal-content -->

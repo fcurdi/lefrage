@@ -50,7 +50,7 @@
 				<div style="width:700px;margin-left:auto;margin-right:auto" >
 					<g:each status="i" var="post" in="${userPosts}">
 						<div style="font-size:15pt"	class="panel panel-default">
-					  		<div class="panel-heading ${post.isAutoPost ? "autopost" : (post.product ? "ml" : "")}">
+							<div class="panel-heading ${post.product ? "ml" : (post.isAutoPost ? "autopost" : "")}">
 					  			${post.author.name}
 					  			<div style="float:right" id="parsedDate${i}">
 				  					<g:formatDate date="${post.date}" format="yyyy-MM-dd HH:mm:ss"/>

@@ -32,7 +32,7 @@ class PostService {
             date: newDate,
             author: loggedUser,
             containingWallUser: wallOwner,
-            isAutoPost: true // modificar cuando este hecho el compartir de producto
+            isAutoPost: loggedUser.id == wallOwner.id // modificar cuando este hecho el compartir de producto
         )
 
         newPost.save(flush: true, failOnError: true)
