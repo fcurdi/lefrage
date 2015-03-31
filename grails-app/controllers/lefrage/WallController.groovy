@@ -53,7 +53,7 @@ class WallController {
         postService.productPost(loggedUser, prodContent.usernameDestination, prodContent)
         render "ignore"
       } else {
-        postService.textPost(loggedUser, prodContent.usernameDestination, params.htmlPostContent)
+        postService.textPost(loggedUser, params.username, params.htmlPostContent)
         redirect(controller: "wall", action: "index", params: params)
       }
 
