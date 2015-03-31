@@ -22,9 +22,9 @@ class WallController {
 
       // currentUser no puede acceder a user si no son amigos
       if (!(user.friends.find{it == currentUser}) && user != currentUser) {
-        render("No sos amigo")
-        sleep(1000)
-        //redirect(controller: "wall", action: "index")
+    //    render("No sos amigo")
+   //     sleep(1000)
+        render(view:"/wall/denyWall", model: [user:user])
       }
 
       def sortedPosts = user.wallPosts.sort{it.date}.reverse(true)
@@ -39,7 +39,7 @@ class WallController {
       profileDOB: user.dateOfBirth, profileFriendsCount: friendsCount]
 
     }
-    
+
     def writePost() {
 
       def currentSpringUser = springSecurityService.currentUser
