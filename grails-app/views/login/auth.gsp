@@ -83,7 +83,7 @@
 	</style>
 </head>
 
-<body>
+<body bgcolor="#d4e157">
 <div id='login'>
 	<div class='inner'>
 		<div class='fheader'><g:message code="springSecurity.login.header"/></div>
