@@ -5,7 +5,7 @@ class Stat {
 	float mean, deviation, max, min
 	int sales
 
-	static belongsTo={query: Query}
+	static belongsTo=[query: Query]
 		
 	Stat calcMean(prices) { 
 		def n = prices.size()

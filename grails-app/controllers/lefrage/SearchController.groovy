@@ -26,7 +26,12 @@ class SearchController {
     def meli(){
         def currentSpringUser = springSecurityService.currentUser
         def user = User.findBySpringUser(currentSpringUser)
-        def favourited = user.queries.find{it.queryString==params.item_search} != null
+        def query = user.queries.find{it.queryString==params.item_search}
+        def favourited = query != null
+        if(favourited){
+            searchService.addStat(query)
+            user.addToQueries(query)
+        }
         def postDestination = user.friends
         postDestination.add(user) //add myself to it
     	[search: params.item_search, optionName: params.optionName, 
@@ -35,8 +40,8 @@ class SearchController {
 
     def favourite(){
         def slurper = new JsonSlurper()
-        def params = slurper.parseText(params.infoStr)
-        searchService.favourite(params.query, params.products)
+        def parameters = slurper.parseText(params.infoStr)
+        searchService.favourite(parameters.query)
         render "okk"
     }
 }

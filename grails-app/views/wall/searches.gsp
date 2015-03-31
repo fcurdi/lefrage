@@ -15,7 +15,7 @@
 	<body>
 		<g:each var="search" in="${searches}">
 			<div class="well well-lg">
-				${search.queryString}
+				<h3>${search.queryString}</h3>
 			</div>
 		</g:each>
 	</body>
