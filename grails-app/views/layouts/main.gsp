@@ -71,14 +71,18 @@
                             </ul>
                         </g:form>
                     </li>
-                     <li class="logout-link">
-                        <a href="${createLink(controller:'logout',action:'index')}" style=""> Logout</a>
-                    </li>
-                    <li class="config-link">
-                        <a href="${createLink(controller:'settings',action:'index')}">Configurar Cuenta</a>
-                    </li>
                     <li>    
                         <Navbar:showRequests/>
+                    </li>
+                     <li class="logout-link">
+                        <a href="${createLink(controller:'logout',action:'index')}"> 
+                            <span class="fa fa-power-off"></span>
+                        </a>
+                    </li>
+                    <li class="config-link">
+                        <a href="${createLink(controller:'settings',action:'index')}">
+                            <span class="fa fa-cog"></span>
+                        </a>
                     </li>
                 </ul>
             </div>
