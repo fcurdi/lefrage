@@ -12,7 +12,7 @@ import java.util.Date
 class PostService {
 
     def productPost(prodContent, loggedUser) {
-        
+        println "hola productPost(), prodContent.image: " + prodContent.image
         def prod = new Product(
             productTitle: prodContent.title,
             productUrlImg: prodContent.image,
@@ -20,16 +20,17 @@ class PostService {
         )
 
         prod.save(flush: true, failOnError: true)
-    	
+        println "hola productPost(), prod.productUrlImg: " + prod.productUrlImg
         def textContent = prodContent.text
-    	def newDate = new Date()
-    	def newPost = new Post(
-    		content: textContent,
-    		product: prod,
-    		date: newDate,
-    		author: loggedUser,
-    		containingWallUser: loggedUser
-    	)
+        def newDate = new Date()
+        def newPost = new Post(
+            content: textContent,
+            product: prod,
+            date: newDate,
+            author: loggedUser,
+            containingWallUser: loggedUser,
+            isAutoPost: true // modificar cuando este hecho el compartir de producto
+        )
 
     	newPost.save(flush: true, failOnError: true)
     	loggedUser.addToWallPosts(newPost)
@@ -40,16 +41,21 @@ class PostService {
 		def urlSpringUser = SpringUser.findByUsername(username)
 		def wallOwner = User.findBySpringUser(urlSpringUser)
 
+        def autoPostBoolean = wallOwner.id == loggedUser.id
+
 	    Date newDate = new Date()
 	    def newPost = new Post(
 	     	content: htmlPostContent,
 	        product: null,
 	       	date: newDate,
 	       	author: loggedUser,
-	        containingWallUser: wallOwner
+	        containingWallUser: wallOwner,
+            isAutoPost: autoPostBoolean
 	    )
 
+
         newPost.save(flush: true, failOnError: true)
+        println "Hola. textPost(" + loggedUser.name + ", " + wallOwner.name + ", " + htmlPostContent + "). isAutoPost: " + newPost.isAutoPost
         wallOwner.addToWallPosts(newPost)
     }
 }

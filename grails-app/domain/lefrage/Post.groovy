@@ -10,6 +10,8 @@ class Post {
 	Date date
 
 	User author // author of post
+
+	def isAutoPost // corregir
 	
 	static belongsTo = [containingWallUser: User] // the user in whose wall this post lives
 
