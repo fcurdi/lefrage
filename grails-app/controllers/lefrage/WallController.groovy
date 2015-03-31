@@ -13,6 +13,11 @@ class WallController {
 
     def postService
 
+    def indexBypass() {
+      def currentSpringUser = springSecurityService.currentUser
+      redirect(controller: "wall", action: "index", params: [username: currentSpringUser.username])
+    }
+
     def index() { 
 
     	def springUser = SpringUser.findByUsername(params.username)

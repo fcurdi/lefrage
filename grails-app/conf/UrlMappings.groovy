@@ -10,7 +10,7 @@ class UrlMappings {
         "/$username/perfil"(controller: "wall", action: "index")
         "/$username/amigos"(controller: "friends", action: "index")
         "/$username/busquedas"(controller: "wall", action: "searches")
-        "/"(view:"/index")
+        "/" (controller: "wall", action: "indexBypass") //need logged user
         "500"(view:'/error')
 	}
 }
