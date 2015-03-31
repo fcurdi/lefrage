@@ -15,7 +15,8 @@ function postProduct() {
 		text:  $("#postContent").val(),
 		title: $("#post_result h3").text(),
 		price: $("#post_result p").text(),
-		image: $("#post_result img").attr("src")
+		image: $("#post_result img").attr("src"),
+		usernameDestination: $('#combobox option:selected').val()
 	};
 
 	jsProdContent = JSON.stringify(jsProdContent)

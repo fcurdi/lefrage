@@ -37,12 +37,13 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<h3 class="modal-title" id="postLabel">Contenido Post</h3>
+	      				<select id="combobox" name="postDestination" class="form-control" style="width: 300px; margin: auto;">
+							<g:each in="${postDestination}" var="friend">
+								<option value="${friend.springUser.username}">${friend.name} ${friend.surname}</option>
+							</g:each>
+						</select>
 					</div>
-		      		<g:form method="post" controller="empleados" action="agregarEmpleado">
-				        <div>
-		                    <g:textArea class="form-control" id="postContent" name="text"/>
-		                </div>
-		            </g:form>
+                    <g:textArea class="form-control" id="postContent" name="text"/>
 					<div class="modal-footer">
 		      			<div id="post_result"></div>
 		      			<div class="row"></div>
@@ -64,11 +65,8 @@
 		            	<p>$ #itemPrice</p>
 		            <hr class="featurette-divider">
 				        <div class="row">
-				        	<div class="buttons col-md-6">
-				        		<button type="button" id="btn-post" class="btn btn-primary btn-block" data-toggle="modal" data-target="#postModal" onclick="completePostTemplate('#urlImg', '#itemTitle', #itemPrice)" >Post</button>
-				        	</div>
-				        	<div class="buttons col-md-6">
-				        		<button class="btn btn-primary btn-block">Compartir</button>
+				        	<div class="buttons col-md-12">
+				        		<button type="button" id="btn-post" class="btn btn-primary btn-block" data-toggle="modal" data-target="#postModal" onclick="completePostTemplate('#urlImg', '#itemTitle', #itemPrice)" >Compartir</button>
 				        	</div>
 				       	</div> <!-- /row -->
 		        	</div> <!-- /caption -->

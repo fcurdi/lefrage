@@ -48,10 +48,10 @@ class WallController {
       def prodContent = slurper.parseText(params.jsProdContent)
 
       if (prodContent != null) {
-        postService.productPost(loggedUser, params.username, prodContent)
+        postService.productPost(loggedUser, prodContent.usernameDestination, prodContent)
         render "ignore"
       } else {
-        postService.textPost(loggedUser, params.username, params.htmlPostContent)
+        postService.textPost(loggedUser, prodContent.usernameDestination, params.htmlPostContent)
         redirect(controller: "wall", action: "index", params: params)
       }
 
