@@ -44,6 +44,7 @@ class SearchService {
             .calcDeviation(products.price)
             .calcMax(products.price)
             .calcMin(products.price)
+            .calcSales(products.sold_quantity)
         query.addToStats(stat)
         return query
     }

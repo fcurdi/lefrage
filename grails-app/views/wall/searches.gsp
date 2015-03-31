@@ -21,7 +21,8 @@
 					mean=${stat.mean}, 
 					deviation=${stat.deviation},
 					max=${stat.max},
-					min=${stat.min}
+					min=${stat.min},
+					sales=${stat.sales}
 				</g:each>
 			</div>
 		</g:each>

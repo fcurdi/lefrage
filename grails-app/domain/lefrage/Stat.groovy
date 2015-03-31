@@ -29,6 +29,11 @@ class Stat {
 		return this
 	}
 
+	Stat calcSales(sales){
+		this.sales = sales.sum()
+		return this
+	}
+
     static constraints = {
     	mean nullable:true
     	deviation nullable:true
