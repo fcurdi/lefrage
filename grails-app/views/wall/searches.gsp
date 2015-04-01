@@ -18,11 +18,11 @@
 				<h2>${search.queryString}</h2>
 				<g:each var="stat" in="${search.stats}">
 					<h3>${stat.date}</h3>
-					mean=${stat.mean}, 
-					deviation=${stat.deviation},
-					max=${stat.max},
-					min=${stat.min},
-					sales=${stat.sales}
+					Promedio = ${stat.mean}, 
+					Desvio Estandar = ${stat.deviation},
+					Maximo = ${stat.max},
+					Minimo = ${stat.min},
+					ventas = ${stat.sales}
 				</g:each>
 			</div>
 		</g:each>
