@@ -11,11 +11,8 @@
 		box-shadow:         0px 5px 7px 0px rgba(0, 0, 0, 0.2);*/
 	}	
 
-	.navbar-inverse .navbar-nav .config-link{
+	.navbar-inverse .navbar-nav .config-link, .navbar-inverse .navbar-nav .logout-link{
 		float:right;
-	}
-	
-	.navbar-inverse .navbar-nav .logout-link{
 		float:right;
 	}
 	
@@ -48,7 +45,7 @@
 		border-radius: 10px;
 	}
 
-	.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-brand:hover{
+	.navbar-inverse .navbar-nav > li > a:hover{
 		background-color: #dce775;
 	}
 
