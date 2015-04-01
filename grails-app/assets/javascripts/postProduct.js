@@ -22,7 +22,6 @@ function postProduct() {
 	jsProdContent = JSON.stringify(jsProdContent)
 
 	$.post(urlController, {"jsProdContent": jsProdContent}).done(function() {
-		console.log("in postProduct");
 		$("#postModal").modal('hide');
 	});
 	

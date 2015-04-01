@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Busqueda Regalo</title>
+		<title>Busqueda de Productos</title>
 	</head>
 	
 	<body>

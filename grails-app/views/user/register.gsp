@@ -30,7 +30,7 @@
 			</div>
 			<div style="text-align: right">
 				<button type="button" class="btn btn-success" id="btn-acept">Aceptar</button>
-				<a type="button" href="/lefrage/login/auth" class="btn btn-danger">Cancelar</a>
+				<a type="button" href="${createLink(controller: 'login', action: 'auth')}" class="btn btn-danger">Cancelar</a>
 			</div>
 		</form>
 	</body>

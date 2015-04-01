@@ -110,11 +110,11 @@
 
 			<p>
 				<input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
-				<a type="button" href="/lefrage/user/register">Registrarse</a>
+				<a type="button" href="${createLink(controller:'user', action: 'register')}">Registrarse</a>
 			</p>
 		</form>
 	</div>
-</div>
+</div>			
 <script type='text/javascript'>
 	<!--
 	(function() {

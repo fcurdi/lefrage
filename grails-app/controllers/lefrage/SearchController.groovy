@@ -19,8 +19,7 @@ class SearchController {
 
     def friends(){
         def friends = searchService.searchPeople(params.item_search)
-        render(view:"/friends/index", model: [friends: friends,
-            search: params.item_search, optionName: params.optionName, optionValue: params.optionValue])
+        render(view:"/friends/index", model: [friends: friends])
     }
 
     def meli(){
